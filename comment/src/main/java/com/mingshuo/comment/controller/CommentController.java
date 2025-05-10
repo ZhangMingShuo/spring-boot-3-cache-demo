@@ -17,4 +17,15 @@ public class CommentController {
         Comment comment = commentService.findCommentById(id);
         return comment;
     }
+    @RequestMapping("/updateComment")
+    public Comment updateComment(Comment comment){
+        Comment commentById = commentService.findCommentById(comment.getId());
+        commentById.setAuthor(comment.getAuthor());
+        Comment comment1 = commentService.updateComment(commentById);
+        return comment1;
+    }
+    @RequestMapping("/deleteComment")
+    public void deleteComment(Integer id){
+        commentService.deleteComment(id);
+    }
 }
